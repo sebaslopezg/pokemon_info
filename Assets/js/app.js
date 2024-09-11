@@ -2,8 +2,13 @@ const btnBuscarPokemon = document.getElementById('btnBuscarPokemon')
 const txtBuscarPokemon = document.getElementById('txtBuscarPokemon')
 const dataZone = document.getElementById('dataZone')
 const btnPokemonRandom = document.getElementById('btnPokemonRandom')
+let randomActivated = false
 
 btnBuscarPokemon.addEventListener('click', ()=> {
+    if (randomActivated) {
+        dataZone.innerHTML = ""
+        randomActivated = false
+    }
     let valor = txtBuscarPokemon.value
     buscarPokemon(valor)
 })
@@ -31,7 +36,7 @@ function buscarPokemon(valor) {
 }
 
 function printData(data){
-    console.log(data)
+    //console.log(data)
     let tipos = ""
     for(let element in data.types){
         tipos += `<span class="pkm-type ${data.types[element].type.name}"> <b>${capitalizeFirstLetter(data.types[element].type.name)}</b></span>`
@@ -45,7 +50,7 @@ function printData(data){
                       <img class="activator" src="${data.sprites.front_default}">
                     </div>
                     <div class="card-content">
-                      <span class="card-title activator grey-text text-darken-4">${data.name}<i class="material-icons right">expand_more</i></span>
+                      <span class="card-title activator grey-text text-darken-4">${capitalizeFirstLetter(data.name)}<i class="material-icons right">expand_more</i></span>
                     </div>
                     <div class="card-reveal">
                       <span class="card-title grey-text text-darken-4">${data.name}<i class="material-icons right">close</i></span>
@@ -72,6 +77,7 @@ function printData(data){
 }
 
 function printCards(){
+    randomActivated = true
     dataZone.innerHTML = ""
     let cantidadCartas = random(5, 100)
 
