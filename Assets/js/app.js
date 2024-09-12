@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function storeNames(theData){
         //data.push(theData.name)
-        data[theData.name] = data.sprites.front_default
+        data[theData.name] = theData.sprites.front_default
     }
 
 });
