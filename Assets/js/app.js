@@ -33,8 +33,8 @@ window.addEventListener('keydown', (e)=>{
 
 function buscarPokemon(valor) {
 
+    //let ruta = `https://pokeapi.co/api/v2/pokemon/${valor}/`
     let ruta = `https://pokeapi.co/api/v2/pokemon-form/${valor}/`
-
     fetch(ruta)
     .then(response => response.json())
     .then(json => printData(json))
@@ -43,6 +43,7 @@ function buscarPokemon(valor) {
 }
 
 function printData(data){
+    //console.log(data)
     let tipos = ""
     let deFrente = ""
     let atras = ""
@@ -272,9 +273,6 @@ function replacer(text){
 
 //getting the names
 
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     let data = {}
     getAllNames()
@@ -301,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function storeNames(theData){
         //data.push(theData.name)
-        data[theData.name] = null
+        data[theData.name] = data.sprites.front_default
     }
 
 });
